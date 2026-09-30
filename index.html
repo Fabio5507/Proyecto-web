@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cubo 3D Mouse Tracker - Puro HTML y CSS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- LÍNEAS AGREGADAS: Header de Cinemark arriba de todo -->
+    <header>
+        <h1>🍿 Cinemark Experiencia 3D 🍿</h1>
+        <p>Disfruta de la mejor experiencia visual en 3D con la saga de los Vengadores</p>
+    </header>
+    <!-- INTERFAZ VISUAL -->
+    
+
+
+        <!-- LÓGICA OCULTA (Radio Buttons) -->
+        <input type="radio" name="cube-face" id="auto-spin" class="logic-radio" checked> <!-- Agregado: Giro automático -->
+        <input type="radio" name="cube-face" id="face1" class="logic-radio">
+        <input type="radio" name="cube-face" id="face2" class="logic-radio">
+        <input type="radio" name="cube-face" id="face3" class="logic-radio">
+        <input type="radio" name="cube-face" id="face4" class="logic-radio">
+        <input type="radio" name="cube-face" id="face5" class="logic-radio">
+        <input type="radio" name="cube-face" id="face6" class="logic-radio">
+
+    <div class="layout">
+        
+        <!-- AGREGADO: MENÚ DE BOTONES -->
+        <div class="menu">
+            <h3>Controles</h3>
+            <label for="auto-spin" class="btn-menu">Giro Automático</label>
+            <hr class="divider">
+            <label for="face1" class="btn-menu">The Avengers (Frente)</label>
+            <label for="face2" class="btn-menu">Avengers Age of Ultron (Atrás)</label>
+            <label for="face3" class="btn-menu">Capitan America Civil War (Derecha)</label>
+            <label for="face4" class="btn-menu">Avengers Infinity war (Izquierda)</label>
+            <label for="face5" class="btn-menu">Avengers Endgame (Arriba)</label>
+            <label for="face6" class="btn-menu">Avengers Doomsday (Abajo)</label>
+        </div>
+
+        <!-- Zona interactiva donde el mouse controla el cubo -->
+        <div class="interactive-area">
+            
+            
+            <!-- Cuadricula invisible de 25 celdas que rastrea tu cursor -->
+            <div class="mouse-tracking-layer">
+                <div class="tr"></div> <div class="tr"></div> <div class="tr"></div> <div class="tr"></div> <div class="tr"></div>
+                <div class="tr"></div> <div class="tr"></div> <div class="tr"></div> <div class="tr"></div> <div class="tr"></div>
+                <div class="tr"></div> <div class="tr"></div> <div class="tr"></div> <div class="tr"></div> <div class="tr"></div>
+                <div class="tr"></div> <div class="tr"></div> <div class="tr"></div> <div class="tr"></div> <div class="tr"></div>
+                <div class="tr"></div> <div class="tr"></div> <div class="tr"></div> <div class="tr"></div> <div class="tr"></div>
+            </div>
+
+            <div class="scene">
+                <div class="cube">
+                    <label for="face1" class="face front"><img src="The_Avengers.jpg"></label>
+                    <label for="face2" class="face back"><img src="Avengers_Age_of_Ultron.jpg"></label>
+                    <label for="face3" class="face right"><img src="Capitan_America_Civil_War.jpg"></label>
+                    <label for="face4" class="face left"><img src="Avengers_Infinity_war.jpg"></label>
+                    <label for="face5" class="face top"><img src="Avengers_Endgame.jpg"></label>
+                    <label for="face6" class="face bottom"><img src="Avengers_Dooms_day.jpg"></label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cuadro de información lateral -->
+        <div class="info-panel">
+            <div class="default-msg">Gira el cubo con el mouse y haz clic en una cara.</div>
+            
+            <div class="content item1"><div class="img-preview"><img src="The_Avengers.jpg"></div><p>Fecha de estreno: 26 de abril de 2012<br>Ver reseñas:<a target="_blank" href="https://www.rottentomatoes.com/m/marvels_the_avengers" style="color: aquamarine;"> Click aqui</a> </p></div>
+            <div class="content item2"><div class="img-preview"><img src="Avengers_Age_of_Ultron.jpg"></div><p>Fecha de estreno: 30 de abril de 2015<br>Ver reseñas:<a target="_blank" href="https://www.rottentomatoes.com/m/avengers_age_of_ultron" style="color: aquamarine;"> Click aqui</a> </p></div>
+            <div class="content item3"><div class="img-preview"><img src="Capitan_America_Civil_War.jpg"></div><p>Fecha de estreno: 28 de abril de 2016<br>Ver reseñas:<a target="_blank" href="https://www.rottentomatoes.com/m/captain_america_civil_war" style="color: aquamarine;"> Click aqui</a> </p></div>
+            <div class="content item4"><div class="img-preview"><img src="Avengers_Infinity_war.jpg"></div><p>Fecha de estreno: 26 de abril de 2018<br>Ver reseñas:<a target="_blank" href="https://www.rottentomatoes.com/m/avengers_infinity_war" style="color: aquamarine;"> Click aqui</a> </p></div>
+            <div class="content item5"><div class="img-preview"><img src="Avengers_Endgame.jpg"></div><p>Fecha de estreno: 25 de abril de 2019<br>Ver reseñas:<a target="_blank" href="https://www.rottentomatoes.com/m/avengers_endgame" style="color: aquamarine;"> Click aqui</a> </p></div>
+            <div class="content item6"><div class="img-preview"><img src="Avengers_Dooms_day.jpg"></div><p>Fecha de estreno: 17 de diciembre de 2026<br>Ver reseñas:<a target="_blank" href="https://www.rottentomatoes.com/m/avengers_doomsday" style="color: aquamarine;"> Click aqui</a> </p></div>
+        </div>
+    </div>
+
+    
+
+</body>
+</html>

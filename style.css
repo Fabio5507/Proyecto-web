@@ -1,0 +1,264 @@
+/* Configuraciones generales */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #141414;
+    color: #fff;
+}
+
+/* Ocultar la logica */
+.logic-radio { display: none; }
+
+/* Contenedor principal alineado horizontalmente debajo del header */
+.layout {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    margin: auto 0;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+
+/* MENU DE BOTONES*/
+.menu {
+    background:  #1c1c1c;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #353b48;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    width: 200px;
+}
+
+.menu h3 {
+    margin: 0 0 10px 0;
+    color: #ff3333;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+.divider {
+    border: 0;
+    height: 1px;
+    background: #718093;
+    margin: 5px 0;
+}
+
+.btn-menu {
+    background: #262626;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+    font-size: 14px;
+    text-align: center;
+    user-select: none;
+}
+
+.btn-menu:hover { background: #718093; }
+.btn-menu:active { transform: scale(0.95); }
+
+/* Resaltar el boton seleccionado */
+body:has(#auto-spin:checked) label[for="auto-spin"].btn-menu,
+body:has(#face1:checked) label[for="face1"].btn-menu,
+body:has(#face2:checked) label[for="face2"].btn-menu,
+body:has(#face3:checked) label[for="face3"].btn-menu,
+body:has(#face4:checked) label[for="face4"].btn-menu,
+body:has(#face5:checked) label[for="face5"].btn-menu,
+body:has(#face6:checked) label[for="face6"].btn-menu {
+    background: #ff3333;
+    color: #eaeaea;
+    font-weight: bold;
+}
+
+
+/*ESCENA Y CUBO 3D */
+.scene {
+    width: 200px;
+    height: 200px;
+    perspective: 800px;
+}
+
+.cube {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    /* Transicion suave para cuando cambias de cara con los botones */
+    transition: transform 5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Animacion de giro continuo */
+@keyframes spinCube {
+    0%   { transform: translateZ(-100px) rotateX(0deg) rotateY(0deg); }
+    100% { transform: translateZ(-100px) rotateX(360deg) rotateY(360deg); }
+}
+
+/* Si "Giro Automatico" esta activo, aplicar la animacion */
+body:has(#auto-spin:checked) .cube {
+    animation: spinCube 15s infinite linear;
+}
+
+/* Si se selecciona una cara especifica, detener la animacion y girar a esa cara */
+body:has(#face1:checked) .cube { transform: translateZ(-100px) rotateY(0deg); animation: none; }
+body:has(#face2:checked) .cube { transform: translateZ(-100px) rotateY(-180deg); animation: none; }
+body:has(#face3:checked) .cube { transform: translateZ(-100px) rotateY(-90deg); animation: none; }
+body:has(#face4:checked) .cube { transform: translateZ(-100px) rotateY(90deg); animation: none; }
+body:has(#face5:checked) .cube { transform: translateZ(-100px) rotateX(-90deg); animation: none; }
+body:has(#face6:checked) .cube { transform: translateZ(-100px) rotateX(90deg); animation: none; }
+
+/* Caras del cubo */
+.face {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: rgba(252, 161, 4, 0.9);
+    border: 2px solid #ff3333;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.face:hover { background: rgba(46, 204, 113, 1); }
+
+/* Posicionamiento 3D inicial de las caras */
+.front  { transform: rotateY(  0deg) translateZ(100px); }
+.back   { transform: rotateY(180deg) translateZ(100px); }
+.right  { transform: rotateY( 90deg) translateZ(100px); }
+.left   { transform: rotateY(-90deg) translateZ(100px); }
+.top    { transform: rotateX( 90deg) translateZ(100px); }
+.bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+
+/* PANEL DE INFORMACION */
+.info-panel {
+    background: #1c1c1c;
+    padding: 20px;
+    border-radius: 12px;
+    width: 280px;
+    min-height: 250px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid #353b48;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.content { display: none; width: 100%; }
+
+.img-preview {
+    width: 200px; height: 300px; background: #718093;
+    display: flex; justify-content: center; align-items: center;
+    margin: auto;
+    margin-bottom: 15px; border-radius: 8px; font-weight: bold; font-size: 20px;
+}
+.default-msg { color: #a4b0be; font-style: italic; line-height: 1.5; }
+
+/* Logica para mostrar el contenido correspondiente */
+body:has(#face1:checked) .item1,
+body:has(#face2:checked) .item2,
+body:has(#face3:checked) .item3,
+body:has(#face4:checked) .item4,
+body:has(#face5:checked) .item5,
+body:has(#face6:checked) .item6 {
+    display: block;
+}
+
+/* Ocultar el mensaje por defecto cuando una cara esta activa */
+body:has(#face1:checked) .default-msg,
+body:has(#face2:checked) .default-msg,
+body:has(#face3:checked) .default-msg,
+body:has(#face4:checked) .default-msg,
+body:has(#face5:checked) .default-msg,
+body:has(#face6:checked) .default-msg {
+    display: none;
+}
+/* Imagen proporcion en el cubo  */
+.face img{
+    width: 200px;
+    height: 200px;
+}
+/* Imagen en proporcion al poster promorcional  */
+.img-preview img{
+    height: 300px;
+    width: 200px;
+    border-radius: 8px;
+}
+/* Ajustes del Header de Cinemark */
+header {
+    display: block;
+    background: linear-gradient(180deg, #ff0000 0%, #141414 100%);
+    padding: 40px 20px;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+header p {
+    color: #cccccc;
+    font-size: 1.1em;
+}
+
+/* Estilos para pantallas de 768px o menos (móviles y tablets pequeñas) */
+@media (max-width: 768px) {
+
+    body {
+        height: auto !important;
+        min-height: 100vh;
+        overflow-y: auto !important;
+    }
+    /* Reducir padding del header para móvil */
+    header {
+        padding: 15px 10px;
+    
+    }
+    header h1 {
+        font-size: 1.6em;
+    }
+    header p {
+        font-size: 0.9em;
+    }
+
+  .layout {
+    flex-direction: column; /* Cambia filas a columnas */
+    gap: 20px;
+  }
+
+  
+
+  .menu {
+    width: 100%; /* El menú toma todo el ancho disponible */
+  }
+}
+/* Estilos para pantallas grandes (laptops y monitores desde 1024px) */
+@media (min-width: 1024px) {
+  header h1 {
+    font-size: 3em;
+  }
+}
